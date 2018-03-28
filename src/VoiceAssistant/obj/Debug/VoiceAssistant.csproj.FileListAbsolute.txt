@@ -1,0 +1,6 @@
+D:\GitHub\loki\src\VoiceAssistant\bin\Debug\VoiceAssistant.dll
+D:\GitHub\loki\src\VoiceAssistant\bin\Debug\VoiceAssistant.pdb
+D:\GitHub\loki\src\VoiceAssistant\obj\Debug\VoiceAssistant.csprojResolveAssemblyReference.cache
+D:\GitHub\loki\src\VoiceAssistant\obj\Debug\VoiceAssistant.csproj.CoreCompileInputs.cache
+D:\GitHub\loki\src\VoiceAssistant\obj\Debug\VoiceAssistant.dll
+D:\GitHub\loki\src\VoiceAssistant\obj\Debug\VoiceAssistant.pdb

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loki.SpeechControl.Synthesis
+namespace VoiceAssistant.SpeechControl.Synthesis
 {
     public interface ISynthesizer : IDisposable
     {

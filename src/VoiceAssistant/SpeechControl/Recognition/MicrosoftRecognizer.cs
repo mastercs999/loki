@@ -6,12 +6,15 @@ using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loki.SpeechControl.Recognition
+namespace VoiceAssistant.SpeechControl.Recognition
 {
     public class MicrosoftRecognizer : IRecognizer
     {
-        public Action<RecognitionResult> OnRecognized { get; set; }
         private readonly SpeechRecognitionEngine Recognizer;
+
+        public Action<RecognitionResult> OnRecognized { get; set; }
+
+
 
 
         public MicrosoftRecognizer()

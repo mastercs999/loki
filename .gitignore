@@ -2,3 +2,9 @@
 src/Loki/bin/
 
 src/Loki/obj/
+
+src/\.vs/
+
+src/ConsoleApp/bin/
+
+src/ConsoleApp/obj/

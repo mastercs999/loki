@@ -5,7 +5,7 @@ using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loki.SpeechControl.Recognition
+namespace VoiceAssistant.SpeechControl.Recognition
 {
     public interface IRecognizer : IDisposable
     {
