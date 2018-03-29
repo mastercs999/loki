@@ -11,7 +11,13 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            new Loki().Start();
+            Loki loki = new Loki();
+
+            // Install assistant
+            loki.Install();
+
+            // Start him
+            loki.Start();
         }
     }
 }

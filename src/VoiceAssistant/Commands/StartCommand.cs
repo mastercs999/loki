@@ -25,7 +25,7 @@ namespace VoiceAssistant.Commands
 
 
 
-        public void Execute()
+        public void Execute(string said)
         {
             Process.Start(TargetPath);
         }

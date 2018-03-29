@@ -11,6 +11,6 @@ namespace VoiceAssistant.Commands
         string Id { get; }
         string Phrase { get; }
 
-        void Execute();
+        void Execute(string said);
     }
 }

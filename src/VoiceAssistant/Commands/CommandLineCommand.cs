@@ -27,7 +27,7 @@ namespace VoiceAssistant.Commands
             Command = command;
         }
 
-        public void Execute()
+        public void Execute(string said)
         {
             // We need to disable redirection otherwise some things like telnet doesn't work
             EnableWow64FSRedirection(false);
