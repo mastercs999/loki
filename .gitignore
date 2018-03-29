@@ -8,3 +8,7 @@ src/\.vs/
 src/ConsoleApp/bin/
 
 src/ConsoleApp/obj/
+
+src/VoiceAssistant/bin/
+
+src/VoiceAssistant/obj/
