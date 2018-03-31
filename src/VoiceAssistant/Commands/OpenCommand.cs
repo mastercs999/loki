@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Commands
 {
-    public class StartCommand : Command, ICommand
+    public class OpenCommand : Command, ICommand
     {
         public string Phrase { get; }
 
@@ -16,7 +16,7 @@ namespace VoiceAssistant.Commands
 
 
 
-        public StartCommand(string phrase, string targetPath)
+        public OpenCommand(string phrase, string targetPath)
         {
             Phrase = phrase;
             TargetPath = targetPath;

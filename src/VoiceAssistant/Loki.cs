@@ -20,10 +20,13 @@ namespace VoiceAssistant
             // Define commands
             ICommand[] commands = new ICommand[]
             {
-                new StartCommand("start Mozilla", @"C:\Program Files\Mozilla Firefox\firefox.exe"),
+                new OpenCommand("open Mozilla", @"C:\Program Files\Mozilla Firefox\firefox.exe"),
+                new CloseCommand("close"),
 
-                new VlcCommand("pause"),
-                new VlcCommand("play"),
+                //new VlcCommand("pause"),
+                //new VlcCommand("play"),
+                new KeyboardCommand("pause", System.Windows.Input.Key.Space),
+                new KeyboardCommand("play", System.Windows.Input.Key.Space),
 
                 //new CommandLineCommand("shutdown", "shutdown /s /hybrid /f /t 0")
             };
@@ -65,6 +68,7 @@ namespace VoiceAssistant
                 recognizer.Start();
 
                 // Never ends
+                Console.ReadLine();
                 Thread.Sleep(int.MaxValue);
             }
         }

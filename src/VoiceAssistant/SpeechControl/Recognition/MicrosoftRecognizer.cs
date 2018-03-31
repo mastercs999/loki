@@ -24,7 +24,7 @@ namespace VoiceAssistant.SpeechControl.Recognition
 
             // Configure input to the speech recognizer.
             Recognizer.SetInputToDefaultAudioDevice();
-            
+
             // Add a handler for the speech recognized event.
             Recognizer.SpeechRecognized += OnSpeechRecognized;
         }
