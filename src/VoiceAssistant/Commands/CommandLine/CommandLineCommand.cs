@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Commands
+namespace VoiceAssistant.Commands.CommandLine
 {
     public class CommandLineCommand : Command, ICommand
     {

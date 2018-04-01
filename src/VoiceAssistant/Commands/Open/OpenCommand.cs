@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Commands
+namespace VoiceAssistant.Commands.Open
 {
     public class OpenCommand : Command, ICommand
     {

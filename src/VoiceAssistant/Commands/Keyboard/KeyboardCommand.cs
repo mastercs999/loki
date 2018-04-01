@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace VoiceAssistant.Commands
+namespace VoiceAssistant.Commands.Keyboard
 {
     public class KeyboardCommand : Command, ICommand
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Commands
+namespace VoiceAssistant.Commands.Vlc
 {
     /// <summary>
     /// Description of possible commands here: https://wiki.videolan.org/Talk:Console/
@@ -18,12 +18,14 @@ namespace VoiceAssistant.Commands
         public string Phrase { get; }
 
         private readonly static string TelnetPassword = "loki";
+        private readonly VlcCommandType CommandType;
 
 
 
-        public VlcCommand(string command)
+        public VlcCommand(string command, VlcCommandType commandType)
         {
             Phrase = command;
+            CommandType = commandType;
         }
 
 
@@ -36,13 +38,32 @@ namespace VoiceAssistant.Commands
                 using (Client client = new Client("localhost", 4212, new CancellationToken()))
                 {
                     client.TryLoginAsync(null, TelnetPassword, 5000).Wait();
-                    client.WriteLine(Phrase);
+
+                    if (CommandType == VlcCommandType.Simple)
+                        client.WriteLine(Phrase);
+                    else if (CommandType == VlcCommandType.Skip)
+                    {
+                        // Find out current position of a movie
+                        client.WriteLine("get_time");
+                        int currentSeconds = int.Parse(CleanResponse(client.ReadAsync().Result.Trim()));
+
+                        string[] parts = said.Split(null);
+                        int value = int.Parse(parts[1]);
+                        int multiplier = parts[2].Contains("second") ? 1 : (parts[2].Contains("minute") ? 60 : 3600);
+
+                        client.WriteLine($"seek {currentSeconds + value * multiplier}");
+                    }
                 }
             }
             catch (SocketException ex)
             {
                 // TODO: log
             }
+        }
+
+        private string CleanResponse(string response)
+        {
+            return response.Substring(0, response.IndexOf('>')).Trim();
         }
 
 

@@ -6,8 +6,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using VoiceAssistant.Commands;
+using VoiceAssistant.Commands.Close;
+using VoiceAssistant.Commands.Keyboard;
+using VoiceAssistant.Commands.Open;
+using VoiceAssistant.Commands.Vlc;
 using VoiceAssistant.Exceptions;
 using VoiceAssistant.Helpers;
+using VoiceAssistant.SpeechControl;
 using VoiceAssistant.SpeechControl.Recognition;
 using VoiceAssistant.SpeechControl.Synthesis;
 
@@ -23,16 +28,16 @@ namespace VoiceAssistant
                 new OpenCommand("open Mozilla", @"C:\Program Files\Mozilla Firefox\firefox.exe"),
                 new CloseCommand("close"),
 
-                //new VlcCommand("pause"),
-                //new VlcCommand("play"),
                 new KeyboardCommand("pause", System.Windows.Input.Key.Space),
                 new KeyboardCommand("play", System.Windows.Input.Key.Space),
+
+                new VlcCommand("skip [-200:200] [second|seconds|minute|minutes|hour|hours]", VlcCommandType.Skip),
 
                 //new CommandLineCommand("shutdown", "shutdown /s /hybrid /f /t 0")
             };
 
             // Create grammars
-            List<Grammar> grammars = commands.Select(x => new Grammar(new GrammarBuilder(x.Phrase)) { Name = x.Id }).ToList();
+            List<Grammar> grammars = commands.Select(x => new Grammar(PhraseParser.Parse(x.Phrase)) { Name = x.Id }).ToList();
 
             // Fast searching for command
             Dictionary<string, ICommand> idToCommand = commands.ToDictionary(x => x.Id);
@@ -67,8 +72,10 @@ namespace VoiceAssistant
                 // Start
                 recognizer.Start();
 
+                // Announce it
+                synthesizer.Speak("Now you can talk");
+
                 // Never ends
-                Console.ReadLine();
                 Thread.Sleep(int.MaxValue);
             }
         }
